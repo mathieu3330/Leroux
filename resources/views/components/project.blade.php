@@ -13,5 +13,9 @@
         <x-labeled-text-input class="ml-3" name="numetude">
             {{ __('N Etudes') }}
         </x-labeled-text-input>
+        <x-labeled-text-input class="ml-3" name="Localisation">
+            {{ __('Localisation') }}
+        </x-labeled-text-input>
+
     </div>
 </div>
