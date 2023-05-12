@@ -87,10 +87,9 @@ class ChecklistController extends Controller
 
         $data["email"] = $email;
         $data["title"] = "leroux.com";
-        $data["filename"] = $data['data']['ville'].'_'.$data['data']['promoteur'].'.pdf';
  
         $files = [
-            public_path($pdf->download($data["filename"])),
+            public_path($pdf->download($checklist.'.pdf')),
         ];
   
         Mail::send('email', $data, function($message)use($data, $files) {
@@ -99,7 +98,7 @@ class ChecklistController extends Controller
  
             foreach ($files as $file){
                 //$message->attach($file);
-                $message->attachData($file, $data["filename"], ['mime' => 'application/pdf']);
+                $message->attachData($file, $data["checklist"] . '.pdf', ['mime' => 'application/pdf']);
             }            
         });
 

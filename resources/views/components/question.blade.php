@@ -12,7 +12,7 @@
                         <label for="{{ $number }}" class="inline-flex items-center">
                             <input id="{{ $number }}" type="radio" value="{{ strtoupper($option) }}"
                                 class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500" name="{{ $number }}">
-                            <span class="ml-2 text-sm text-gray-600">{{ CustomHelpers::mapToLabel($option) }}</span>
+                            <span class="ml-2 text-sm text-gray-600">{{ strtoupper($option) }}</span>
                         </label>
                     @endforeach
                 </div>
@@ -23,7 +23,7 @@
                         <label for="{{ $number }}" class="inline-flex items-center">
                             <input id="{{ $number }}" type="checkbox" value="{{ strtoupper($option) }}"
                                 class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500" name="{{ $number }}">
-                            <span class="ml-2 text-sm text-gray-600">{{ CustomHelpers::mapToLabel($option) }}</span>
+                            <span class="ml-2 text-sm text-gray-600">{{ strtoupper($option) }}</span>
                         </label>
                     @endforeach
                 </div>

@@ -27,16 +27,15 @@
             <p><b>Ville:</b> {{ $data['ville'] }}</p>
             <p><b>Promoteur:</b> {{ $data['promoteur'] }}</p>
             <p><b>N Etudes:</b> {{ $data['numetude'] }}</p>
-            <p><b>Localisation:</b> {{ $data['Localisation'] }}</p>
         </div>
     </div>
     
     <div class="questions">
         <div class="list">
             @foreach ($questions as $question)
-                <p class="label"><u> {{ 'Question ' . $loop->iteration . ': ' }}</u> {{ $question->question }} </p>
+                <p class="label"> {{ 'Q' . $loop->iteration . ': ' . $question->question }} </p>
                 @if(array_key_exists('Q' . $loop->iteration, $data))
-                    <p class="response"> {{ CustomHelpers::mapToLabel($data['Q' . $loop->iteration]) }}</p>
+                    <p class="response"> {{ $data['Q' . $loop->iteration] }} </p>
                 @else
                     <p class="response"> - </p>
                 @endif
