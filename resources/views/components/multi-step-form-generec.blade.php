@@ -3,15 +3,15 @@
     @csrf
     {{ $slot }}
     <div class="flex justify-between">
-      <x-primary-button class="ml-3" type="button" id="start">
+      <x-primary-button class="ml-3 btn-spacing" type="button" id="start">
         {{ __('Lancer la check-list') }}
       </x-primary-button>
 
-      <x-primary-button class="float-right hidden" type="button" id="next">
+      <x-primary-button class="float-right hidden btn-spacing" type="button" id="next">
         {{ __('Suivant') }}
       </x-primary-button>
 
-      <x-primary-button class="float-right hidden" type="submit" id="submit">
+      <x-primary-button class="float-right hidden btn-spacing" type="submit" id="submit">
         {{ __('Envoyer PDF') }}
       </x-primary-button>
     </div>
@@ -72,6 +72,9 @@
 
   // go to the next step
   const nextStep = () => {
+    if (currentStep == 1 && !form.reportValidity()) {
+      return;
+    }
     const counter = document.getElementById('counter');
     counter.value = currentStep;
     currentStep++;

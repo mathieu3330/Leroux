@@ -3,19 +3,19 @@
     @csrf
     {{ $slot }}
     <div class="flex justify-between space-y-2.5">
-      <x-secondary-button class="float-left" id="cancel">
+      <x-secondary-button class="float-left  btn-spacing" id="cancel">
         {{ __('Annuler') }}
       </x-secondary-button>
 
-      <x-primary-button class="ml-3" type="button" id="start">
+      <x-primary-button class="btn-spacing" type="button" id="start">
         {{ __('Lancer la check-list') }}
       </x-primary-button>
 
-      <x-primary-button class="float-right hidden" type="button" id="next">
+      <x-primary-button class="float-right hidden btn-spacing" type="button" id="next">
         {{ __('Suivant') }}
       </x-primary-button>
 
-      <x-primary-button class="float-right hidden" type="submit" id="submit">
+      <x-primary-button class="float-right hidden btn-spacing" type="submit" id="submit">
         {{ __('Envoyer PDF') }}
       </x-primary-button>
     </div>
@@ -40,6 +40,9 @@
 
   // go to the next step
   const nextStep = () => {
+    if (currentStep == 0 && !form.reportValidity()) {
+      return;
+    }
     currentStep++;
     showStep();
     // start step
