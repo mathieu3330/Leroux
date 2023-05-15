@@ -12,7 +12,7 @@
         </div>
         @foreach ($questions as $question)
             <div class="step hidden" id="step-{{ $loop->iteration+1 }}">
-                <x-question :question='$question' number="Q{{ $loop->iteration }}">
+                <x-question :question='$question' number="Question-{{ $loop->iteration }}">
                 </x-question>
             </div>
         @endforeach

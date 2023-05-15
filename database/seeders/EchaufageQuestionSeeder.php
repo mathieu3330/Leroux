@@ -30,7 +30,7 @@ class EchaufageQuestionSeeder extends Seeder
             Question::create([
                 'type' => 'radio,img',
             'question' => $question,
-            'options' =>'c,nc,so',
+            'options' =>'conforme,non conforme,sans objet',
             'checklist' =>'echafaudage'
             ]);
         }
