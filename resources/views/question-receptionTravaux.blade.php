@@ -1,3 +1,3 @@
 <x-question-form>
-{{ __('Réception Traveau Zinguerie') }}
+{{ __('Réception Travaux Zinguerie') }}
 </x-question-form>

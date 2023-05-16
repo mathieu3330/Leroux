@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-        {{ __('Réception Traveau Zinguerie') }}
+        {{ __('Réception Travaux Zinguerie') }}
         </h2>
     </x-slot>
     <x-multi-step-form route="send-pdf">
