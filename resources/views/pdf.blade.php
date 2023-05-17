@@ -35,14 +35,14 @@
         <div class="list">
             @foreach ($questions as $question)
                 <p class="label"><u> {{ 'Question-' . $loop->iteration . ': ' }}</u> {{ $question->question }} </p>
-                @if(array_key_exists('Question-' . $loop->iteration, $data))
-                    <p class="response"> {{ CustomHelpers::mapToLabel($data['Question-' . $loop->iteration]) }}</p>
+                @if(array_key_exists('Q' . $loop->iteration, $data))
+                    <p class="response"> {{ CustomHelpers::mapToLabel($data['Q' . $loop->iteration]) }}</p>
                 @else
                     <p class="response"> - </p>
                 @endif
 
-                @if(array_key_exists('img-Question-' . $loop->iteration, $data))
-                <img class="img-response" src="data:{{$data['img-Question-' . $loop->iteration]->getClientMimeType()}};base64,{{base64_encode($data['img-Question-' . $loop->iteration]->get())}}"/>
+                @if(array_key_exists('img-Q' . $loop->iteration, $data))
+                <img class="img-response" src="data:{{$data['img-Q' . $loop->iteration]->getClientMimeType()}};base64,{{base64_encode($data['img-Q' . $loop->iteration]->get())}}"/>
                 @endif
 
             @endforeach

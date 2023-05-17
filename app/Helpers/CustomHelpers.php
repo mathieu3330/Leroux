@@ -12,8 +12,8 @@ class CustomHelpers
 
     public static function mapToLabel($option)
     {
-        if (isset($valueLabelMap[strtolower($option)])) {
-            return CustomHelpers::$valueLabelMap[$option];
+        if (array_key_exists($option, CustomHelpers::$valueLabelMap)) {
+            return CustomHelpers::$valueLabelMap[strtolower($option)];
         }
         return strtoupper($option);
     }
