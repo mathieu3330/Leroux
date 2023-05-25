@@ -15,8 +15,6 @@
         }
         .rotate-right-90 {
             transform: rotate(90deg);
-            margin-top: 5px;
-            margin-bottom: 5px;
         }
         .margin {
             margin-top: 5px;
