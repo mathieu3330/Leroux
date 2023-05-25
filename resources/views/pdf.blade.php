@@ -13,13 +13,6 @@
         .list .img-response {
             max-height: 300px;
         }
-        .rotate-right-90 {
-            transform: rotate(90deg);
-        }
-        .margin {
-            margin-top: 5px;
-            margin-bottom: 5px;
-        }
     </style>
 </head>
 <body>
@@ -49,7 +42,7 @@
                 @endif
 
                 @if(array_key_exists('img-Q' . $loop->iteration, $data))
-                <img class="img-response rotate-right-90 margin" src="data:{{$data['img-Q' . $loop->iteration]->getClientMimeType()}};base64,{{base64_encode($data['img-Q' . $loop->iteration]->get())}}"/>
+                <img class="img-response" src="data:{{$data['img-Q' . $loop->iteration]->getClientMimeType()}};base64,{{base64_encode($data['img-Q' . $loop->iteration]->get())}}"/>
                 @endif
 
             @endforeach
