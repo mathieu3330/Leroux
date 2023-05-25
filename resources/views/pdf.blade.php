@@ -18,6 +18,10 @@
             margin-top: 5px;
             margin-bottom: 5px;
         }
+        .margin {
+            margin-top: 5px;
+            margin-bottom: 5px;
+        }
     </style>
 </head>
 <body>
@@ -39,11 +43,11 @@
     <div class="questions">
         <div class="list">
             @foreach ($questions as $question)
-                <p class="label"><u> {{ 'Question-' . $loop->iteration . ': ' }}</u> {{ $question->question }} </p>
+                <p class="label margin"><u> {{ 'Question-' . $loop->iteration . ': ' }}</u> {{ $question->question }} </p>
                 @if(array_key_exists('Q' . $loop->iteration, $data))
-                    <p class="response"> {{ CustomHelpers::mapToLabel($data['Q' . $loop->iteration]) }}</p>
+                    <p class="response margin"> {{ CustomHelpers::mapToLabel($data['Q' . $loop->iteration]) }}</p>
                 @else
-                    <p class="response"> - </p>
+                    <p class="response margin"> - </p>
                 @endif
 
                 @if(array_key_exists('img-Q' . $loop->iteration, $data))
