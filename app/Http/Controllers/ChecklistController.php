@@ -60,6 +60,7 @@ class ChecklistController extends Controller
 
     public function sendPdf(Request $request)
     {
+        info($request);
         $checklist = $request->input('checklist');
         $questions = [];
         if ($checklist == 'reception support') {

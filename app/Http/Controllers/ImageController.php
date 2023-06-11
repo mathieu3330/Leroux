@@ -17,7 +17,7 @@ class ImageController extends Controller
 
         // Build the image URL
         $imageUrl = 'uploads/' . $fileName;
-
+        info($imageUrl );
         // Return the image URL
         return response()->json(['image_url' => $imageUrl]);
     }
