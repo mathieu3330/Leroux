@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ChecklistController;
+use App\Http\Controllers\ImageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,6 +39,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::view('/question-reception', 'question-reception')->name('question');
     Route::view('/question-support', 'question-support')->name('question');
     Route::view('/question-receptionTravaux', 'question-receptionTravaux')->name('question');
+    Route::post('/upload-image', [ImageController::class, 'upload'])->name('upload.image');
 
 });
 

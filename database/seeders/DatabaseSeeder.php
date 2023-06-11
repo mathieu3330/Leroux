@@ -21,7 +21,8 @@ class DatabaseSeeder extends Seeder
     'toliveira@leroux-couverture.fr', 
     'amouzarine@leroux-couverture.fr', 
     'nyagiz@leroux-couverture.fr', 
-    'llemuhot@leroux-couverture.fr'];
+    'llemuhot@leroux-couverture.fr',
+    'mbertin@leroux-couverture.fr'];
     /**
      * Seed the application's database.
      *

@@ -25,6 +25,7 @@
 <script>
   const form = document.getElementById('multistep-form');
   const steps = Array.from(form.getElementsByClassName('step'));
+  const csrfToken = "{{ csrf_token() }}";
   let currentStep = 0;
 
   // show the current step
@@ -45,6 +46,7 @@
     }
     currentStep++;
     showStep();
+    uploadHandling(currentStep);
     // start step
     if(currentStep == 1) {
       document.getElementById('next').classList.remove('hidden');
@@ -72,6 +74,35 @@
     document.getElementById('next').classList.add('hidden');
     document.getElementById('start').classList.remove('hidden');
   };
+  const uploadHandling = (number) => {
+    const imageInput = document.getElementById('img-Q'+number);
+    const imageUrlInput = document.getElementById('image-url-Q'+number);
+    if(imageInput) {
+      imageInput.addEventListener('change', () => {
+        const imageFile = imageInput.files[0];
+        const formData = new FormData();
+        formData.append('image', imageFile);
+
+        fetch("{{ route('upload.image') }}", {
+            method: 'POST',
+            headers: {
+                'X-CSRF-TOKEN': csrfToken
+            },
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            imageUrlInput.value = data.image_url;
+            console.log('Image uploaded successfully!');
+        })
+        .catch(error => {
+            console.log('Error uploading image: ' + error);
+        });
+    });
+    }
+    
+  }
+
 
   // add event listeners to buttons
   document.getElementById('next').addEventListener('click', nextStep);

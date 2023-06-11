@@ -8,6 +8,17 @@ use Illuminate\Database\Seeder;
 
 class ReceptionCharpenteQuestionSeeder extends Seeder
 {
+    private static $questionsTxtImg = ['Localiser la zone réceptionnée', 
+    'Les dimensions des chevêtres sont-elles respectées ?', 
+    'L’alignement des éléments de charpente permet le démarrage des travaux de couverture ?', 
+    'Les souches béton sont-elles terminées ?'];
+
+
+    private static $questionsOptions = ['La charpente est-elle terminée ?', 
+    'Le bandeau est-il posé ?', 
+    'Le bandeau est-il de niveau ?', 
+    'La hauteur du bandeau est-elle respectée pour assurer la ventilation ?'];
+
 
      
     /**

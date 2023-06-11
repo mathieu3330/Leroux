@@ -21,6 +21,7 @@
 <script>
   const container = document.getElementById('generic-container');
   const form = document.getElementById('multistep-form');
+  const csrfToken = "{{ csrf_token() }}";
   let currentStep = 1;
 
   const initializeCounter = () => {
@@ -51,6 +52,7 @@
       document.getElementById('submit').classList.remove('hidden');
       document.getElementById('next').classList.remove('hidden');
       document.getElementById('start').classList.add('hidden');
+      uploadHandling(1);
     }else if (currentStep > 1) {
       // hide previous & show next
       document.getElementById('step-'+(currentStep-1)).classList.add('hidden');
@@ -63,10 +65,12 @@
       newElem.setAttribute('id', 'step-'+currentStep);
       newElem.querySelector('textarea').setAttribute('name', 'Q'+(currentStep - 1));
       newElem.querySelector('input[type=file]').setAttribute('id', 'img-Q'+(currentStep - 1));
-      newElem.querySelector('input[type=file]').setAttribute('name', 'img-Q'+(currentStep - 1));
+      newElem.querySelector('input[type=hidden]').setAttribute('id', 'image-url-Q'+(currentStep - 1));
+      newElem.querySelector('input[type=hidden]').setAttribute('name', 'image-url-Q'+(currentStep - 1));
       var before = elem.nextSibling;
       elem.parentNode.insertBefore(newElem, before);
       newElem.classList.remove('hidden');
+      uploadHandling(currentStep - 1);
     }
   };
 
@@ -85,6 +89,33 @@
       document.getElementById('start').classList.add('hidden');
     }
   };
+
+  const uploadHandling = (number) => {
+    const imageInput = document.getElementById('img-Q'+number);
+    const imageUrlInput = document.getElementById('image-url-Q'+number);
+
+    imageInput.addEventListener('change', () => {
+        const imageFile = imageInput.files[0];
+        const formData = new FormData();
+        formData.append('image', imageFile);
+
+        fetch("{{ route('upload.image') }}", {
+            method: 'POST',
+            headers: {
+                'X-CSRF-TOKEN': csrfToken
+            },
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            imageUrlInput.value = data.image_url;
+            console.log('Image uploaded successfully!');
+        })
+        .catch(error => {
+            console.log('Error uploading image: ' + error);
+        });
+    });
+  }
 
   // add event listeners to buttons
   document.getElementById('next').addEventListener('click', nextStep);

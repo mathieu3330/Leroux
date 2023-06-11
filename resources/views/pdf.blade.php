@@ -41,8 +41,8 @@
                     <p class="response"> - </p>
                 @endif
 
-                @if(array_key_exists('img-Q' . $loop->iteration, $data))
-                <img class="img-response" src="data:{{$data['img-Q' . $loop->iteration]->getClientMimeType()}};base64,{{base64_encode($data['img-Q' . $loop->iteration]->get())}}"/>
+                @if(array_key_exists('image-url-Q' . $loop->iteration, $data) && !is_null($data['image-url-Q' . $loop->iteration]))
+                <img class="img-response" src="{{ public_path() . '/' . $data['image-url-Q' . $loop->iteration] }}" alt="{{$data['image-url-Q' . $loop->iteration] }}"/>
                 @endif
 
             @endforeach
