@@ -58,9 +58,62 @@ class ChecklistController extends Controller
         return view('security', ['questions' => $questions]);
     }
 
+    public function outillage()
+    {
+
+        $questions = Question::where('checklist', 'outillage')->get();
+        return view('outillage', ['questions' => $questions]);
+    }
+
+    public function retour()
+    {
+        
+        $outillage = 'Retour';
+        return view('outillageChamps', ['outillage' => $outillage]);
+    }
+
+    public function affectation()
+    {
+        
+        $outillage = 'Affectation';
+        return view('outillageChamps', ['outillage' => $outillage]);
+    }
+
+
+    public function processOutillageForm(Request $request)
+    {   
+        $data = [
+            'data' => $request->except(['_token']),
+        ];
+           
+        $pdf = PDF::loadView('pdf-template', $data);
+        $email = Auth::user()->email;
+        info($email);
+
+        $data["email"] = $email;
+        $data["title"] = "leroux.com";
+        $outillageKey = $request->input('outillage') == 'Retour' ? 'R' : 'A';
+        $data["filename"] = $data['data']['date'].'_'.$outillageKey.'_'.$data['data']['nom'].'_'.$data['data']['prenom'].'.pdf';
+ 
+        $files = [
+            public_path($pdf->download($data["filename"])),
+        ];
+  
+        Mail::send('email', $data, function($message)use($data, $files) {
+            $message->to($data["email"])
+                    ->subject($data["title"]);
+ 
+            foreach ($files as $file){
+                //$message->attach($file);
+                $message->attachData($file, $data["filename"], ['mime' => 'application/pdf']);
+            }            
+        });
+
+        return redirect('/dashboard');
+    }
+
     public function sendPdf(Request $request)
     {
-        info($request);
         $checklist = $request->input('checklist');
         $questions = [];
         if ($checklist == 'reception support') {

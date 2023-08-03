@@ -30,6 +30,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::view('/reception', 'reception')->name('reception');
     Route::get('/support', [ChecklistController::class, 'receptionCharpente'])->name('support');
     Route::get('/reception', [ChecklistController::class, 'receptionTravaux'])->name('reception');
+    Route::get('/outillage', [ChecklistController::class, 'outillage'])->name('outillage');
+    Route::get('/affectation', [ChecklistController::class, 'affectation'])->name('affectation');
+    Route::get('/retour', [ChecklistController::class, 'retour'])->name('retour');
+    Route::post('/submit-outillage', [ChecklistController::class, 'processOutillageForm'])->name('processOutillageForm');
 
     Route::get('/receptionSupport', [ChecklistController::class, 'receptionSupport'])->name('receptionSupport');
 

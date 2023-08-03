@@ -36,6 +36,11 @@
                                 </a>
                                 <a class="text-center text-white font-semibold z-10 pointer-events-none">Réception travaux Zinguerie</a>
                             </div>
+                            <div class="b mx-auto h-16 w-64 flex justify-center items-center">
+                                <a href="{{ route('outillage') }}" class="i h-16 w-64 bg-gradient-to-br from-sky-600 to-sky-600 items-center rounded-full shadow-2xl cursor-pointer absolute overflow-hidden transform hover:scale-x-110 hover:scale-y-105 transition duration-300 ease-out">
+                                </a>
+                                <a class="text-center text-white font-semibold z-10 pointer-events-none">Outillage</a>
+                            </div>
 
                             
 

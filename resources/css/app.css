@@ -5,3 +5,10 @@
     margin-top: 30px !important;
     
 }
+
+.centered-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Add any additional styles for the button itself if needed */
+  }
