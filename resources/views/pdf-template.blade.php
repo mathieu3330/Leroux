@@ -7,10 +7,7 @@
             width: 120px;
             float: right;
         }
-        .list .label {
-           font-weight: bold;
-        }
-        .list .img-response {
+        .img-response {
             max-height: 300px;
         }
     </style>
