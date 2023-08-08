@@ -7,6 +7,9 @@
             width: 120px;
             float: right;
         }
+        .list .label {
+           font-weight: bold;
+        }
         .img-response {
             max-height: 300px;
         }
@@ -26,9 +29,17 @@
             <p><b>Nom:</b> {{ $data['nom'] }}</p>
             <p><b>Outil:</b> {{ $data['outil'] }}</p>
             <p><b>Commentaire:</b> {{ $data['comment'] }}</p>
-            <p><b>Image:</b></p>
+            <p><b>Images:</b></p>
             <p>
+            @if(isset($data['image-url-out']))
                 <img class="img-response" src="{{ public_path() . '/' . $data['image-url-out'] }}" alt="{{ $data['image-url-out'] }}"/>
+            @endif
+            </p>
+
+            <p>
+            @if(isset($data['image1-url-out']))
+                <img class="img-response" src="{{ public_path() . '/' . $data['image1-url-out'] }}" alt="{{ $data['image1-url-out'] }}"/> 
+            @endif
             </p>
         </div>
     </div>
