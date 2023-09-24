@@ -20,19 +20,14 @@
                             placeholder="date" required />
                     </div>
 
-                    <div
-                        class="select-btn bg-white flex min-h-[60px] flex-col-reverse justify-center rounded-md border border-gray-300 px-3 py-2 shadow-sm focus-within:shadow-inner">
-                        <input type="text" name="nom" id="nom"
-                            class="peer block w-full border-0 p-0 text-base text-gray-900 placeholder-gray-400 focus:ring-0"
-                            placeholder="Nom" />
-                    </div>
+                    <x-searchable-nom-select class="ml-3" name="nom" id="nom">
+                        {{ __('Nom') }}
+                    </x-searchable-nom-select>
 
-                    <div
-                        class="select-btn bg-white flex min-h-[60px] flex-col-reverse justify-center rounded-md border border-gray-300 px-3 py-2 shadow-sm focus-within:shadow-inner">
-                        <input type="text" name="prenom" id="prenom"
-                            class="peer block w-full border-0 p-0 text-base text-gray-900 placeholder-gray-400 focus:ring-0"
-                            placeholder="Prénom " />
-                    </div>
+                    <x-searchable-prenom-select class="ml-3" name="prenom" id="prenom">
+                        {{ __('Prénom') }}
+                    </x-searchable-prenom-select>
+                    
                     <x-primary-button class="float-right btn-spacing centered-text" type="button" id="next">
                         {{ __('Suivant') }}
                     </x-primary-button>

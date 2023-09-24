@@ -90,10 +90,11 @@ class ChecklistController extends Controller
         $email = Auth::user()->email;
         info($email);
 
+        $currentDateTime = date('His');
         $data["email"] = $email;
         $data["title"] = "leroux.com";
         $outillageKey = $request->input('outillage') == 'Retour' ? 'R' : 'A';
-        $data["filename"] = $data['data']['date'].'_'.$outillageKey.'_'.$data['data']['nom'].'_'.$data['data']['prenom'].'.pdf';
+        $data["filename"] = $data['data']['date'].'_'.$outillageKey.'_'.$data['data']['nom'].'_'.$data['data']['prenom']. '_' . $currentDateTime .'.pdf';
  
         $files = [
             public_path($pdf->download($data["filename"])),

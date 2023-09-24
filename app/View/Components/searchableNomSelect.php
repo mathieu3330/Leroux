@@ -4,7 +4,7 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class searchableOutillSelect extends Component
+class searchableNomSelect extends Component
 {
     /**
      * Create a new component instance.
@@ -23,6 +23,6 @@ class searchableOutillSelect extends Component
      */
     public function render()
     {
-        return view('components.searchable-outill-select');
+        return view('components.searchable-nom-select');
     }
 }
