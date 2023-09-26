@@ -82,6 +82,7 @@ class ChecklistController extends Controller
 
     public function processOutillageForm(Request $request)
     {   
+        sleep(3);
         $data = [
             'data' => $request->except(['_token']),
         ];
@@ -99,7 +100,7 @@ class ChecklistController extends Controller
         $files = [
             public_path($pdf->download($data["filename"])),
         ];
-  
+        sleep(3);
         Mail::send('email', $data, function($message)use($data, $files) {
             $message->to($data["email"])
                     ->subject($data["title"]);

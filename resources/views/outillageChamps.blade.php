@@ -27,7 +27,7 @@
                     <x-searchable-prenom-select class="ml-3" name="prenom" id="prenom">
                         {{ __('Prénom') }}
                     </x-searchable-prenom-select>
-                    
+
                     <x-primary-button class="float-right btn-spacing centered-text" type="button" id="next">
                         {{ __('Suivant') }}
                     </x-primary-button>
@@ -96,11 +96,12 @@
             uploadHandling();
         };
 
-        const uploadHandling = () => {
+        const uploadHandling = (number) => {
             const imageInput = document.getElementById('img-out');
             const imageInput1 = document.getElementById('img1-out');
             const imageUrlInput = document.getElementById('image-url-out');
             const imageUrlInput1 = document.getElementById('image1-url-out');
+            
             if (imageInput) {
                 imageInput.addEventListener('change', () => {
                     const imageFile = imageInput.files[0];
@@ -116,39 +117,46 @@
                     })
                     .then(response => response.json())
                     .then(data => {
-                        imageUrlInput.value = data.image_url;
-                        console.log('Image uploaded successfully!');
+                        if (data && data.image_url) {
+                            imageUrlInput.value = data.image_url;
+                            console.log('First image uploaded successfully!');
+                        } else {
+                            console.log('First image upload response did not contain expected data.');
+                        }
                     })
                     .catch(error => {
-                        console.log('Error uploading image: ' + error);
+                        console.log('Error uploading first image: ' + error);
                     });
                 });
             }
 
             if (imageInput1) {
                 imageInput1.addEventListener('change', () => {
-                    const imageFile = imageInput1.files[0];
-                    const formData = new FormData();
-                    formData.append('image', imageFile);
+                    const imageFile1 = imageInput1.files[0];
+                    const formData1 = new FormData();
+                    formData1.append('image', imageFile1);
 
                     fetch("{{ route('upload.image') }}", {
                         method: 'POST',
                         headers: {
                             'X-CSRF-TOKEN': csrfToken
                         },
-                        body: formData
+                        body: formData1
                     })
                     .then(response => response.json())
                     .then(data => {
-                        imageUrlInput1.value = data.image_url;
-                        console.log('Image uploaded successfully!');
+                        if (data && data.image_url) {
+                            imageUrlInput1.value = data.image_url;
+                            console.log('Second image uploaded successfully!');
+                        } else {
+                            console.log('Second image upload response did not contain expected data.');
+                        }
                     })
                     .catch(error => {
-                        console.log('Error uploading image: ' + error);
+                        console.log('Error uploading second image: ' + error);
                     });
                 });
             }
-
         }
 
 
