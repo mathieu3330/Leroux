@@ -12,3 +12,18 @@
     align-items: center;
     /* Add any additional styles for the button itself if needed */
   }
+  .spinner {
+    display: none;
+    width: 40px;
+    height: 40px;
+    border: 4px solid rgba(0, 0, 0, 0.3);
+    border-radius: 50%;
+    border-top: 4px solid #007bff; /* Change the color to your preference */
+    animation: spin 20s linear infinite;
+    margin: 20px auto;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}  

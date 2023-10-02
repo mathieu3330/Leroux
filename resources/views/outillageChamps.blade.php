@@ -54,6 +54,9 @@
                             <input type="hidden" name="image1-url-out" id="image1-url-out">
                         </div>
                     <br></br>
+                    <div id="spinner" class="hidden flex justify-center items-center absolute inset-0 bg-gray-300 bg-opacity-50">
+                        <div class="animate-spin rounded-full h-16 w-16 border-t-4 border-blue-500"></div>
+                    </div>
                     <div
                         class="select-btn bg-white flex min-h-[60px] flex-col-reverse justify-center rounded-md border border-gray-300 px-3 py-2 shadow-sm focus-within:shadow-inner">
 
@@ -95,6 +98,26 @@
             showStep();
             uploadHandling();
         };
+
+        function showSpinner() {
+            const spinner = document.getElementById("spinner");
+            if (spinner) {
+                spinner.classList.remove("hidden");
+                 // Automatically hide the spinner after 6 seconds (6000 milliseconds)
+                setTimeout(() => {
+                    hideSpinner();
+                }, 7000);
+                
+            }
+        }
+
+        // Function to hide the spinner
+        function hideSpinner() {
+            const spinner = document.getElementById("spinner");
+            if (spinner) {
+                spinner.classList.add("hidden");
+            }
+        }
 
         const uploadHandling = (number) => {
             const imageInput = document.getElementById('img-out');
