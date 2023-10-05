@@ -178,6 +178,7 @@
                     .catch(error => {
                         console.log('Error uploading second image: ' + error);
                     });
+                    showSpinner();
                 });
             }
         }
